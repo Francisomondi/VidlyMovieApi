@@ -1,6 +1,7 @@
 const {
     User
 } = require('../models/user');
+const config = require("config")
 const jwt = require("jsonwebtoken")
 const mongoose = require('mongoose');
 const express = require('express');
@@ -25,7 +26,7 @@ router.post('/', async (req, res) => {
 
     const token = jwt.sign({
         _id: user._id
-    }, "jwtPrivateKey")
+    }, config.get("jwtPrivateKey"))
 
     res.send(token)
 })
