@@ -8,7 +8,8 @@ const express = require('express');
 const router = express.Router();
 const _ = require("lodash")
 const bcrypt = require("bcrypt")
-const Joi = require('joi');
+const Joi = require('joi')
+
 
 router.post('/', async (req, res) => {
     const {

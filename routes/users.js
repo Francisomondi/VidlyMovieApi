@@ -11,10 +11,9 @@ const auth = require("./auth")
 
 
 router.get("/me", auth, async (req, res) => {
-    const user = await User.findById(_id).select("-password")
+    const user = await User.findById(req.user._id).select("-password")
     res.send(user)
 })
-
 router.post('/', async (req, res) => {
     const {
         error
@@ -31,8 +30,6 @@ router.post('/', async (req, res) => {
     user.password = await bcrypt.hash(user.password, salt)
 
     await user.save()
-
-
     res.send(_.pick(user, ["_id", "name", "email"]))
 });
 

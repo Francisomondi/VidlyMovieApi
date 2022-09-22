@@ -20,6 +20,10 @@ const User = mongoose.model('User', new mongoose.Schema({
         required: true,
         minlength: 5,
         maxlength: 1024
+    },
+    date: {
+        type: Date,
+        default: Date.now
     }
 }));
 
@@ -32,5 +36,5 @@ function validateUser(user) {
     return Joi.validate(user, schema);
 }
 
-exports.User = User;
-exports.validate = validateUser;
+exports.User = User
+exports.validate = validateUser
