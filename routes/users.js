@@ -8,7 +8,7 @@ const router = express.Router();
 const _ = require("lodash")
 const bcrypt = require("bcrypt")
 const auth = require("./auth")
-const jwt = require("jsonwebtoken")
+
 
 
 router.get("/me", auth, async (req, res) => {
