@@ -9,6 +9,7 @@ const users = require('./routes/users');
 const express = require('express');
 const app = express();
 const auth = require("./routes/auth")
+const error = require("./middleware/error")
 
 mongoose.connect('mongodb://localhost/vidly')
   .then(() => console.log('Connected to MongoDB...'))
@@ -22,6 +23,8 @@ app.use('/api/movies', movies);
 app.use('/api/rentals', rentals);
 app.use('/api/users', users);
 app.use('/api/auth', auth);
+
+app.use(error)
 
 const port = process.env.PORT || 3000;
 app.listen(port, () => console.log(`Listening on port ${port}...`));
